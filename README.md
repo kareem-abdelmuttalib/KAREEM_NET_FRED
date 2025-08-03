@@ -1,5 +1,6 @@
-![Banner](./assets/banner.png)
-
+<p align="center">
+  <img src="./assets/banner.png" alt="Banner" width="100%">
+</p>
 
 
 # KAREEM NET FRED
@@ -211,4 +212,8 @@ KAREEM NET FRED is intended for educational and ethical use only.
 The developer is not responsible for any misuse of this tool.
 Use responsibly and in accordance with the laws in your country.
 
+
+<p align="center">
+  <img src="./assets/IP_Changer.png" alt="Banner" width="100%">
+</p>
 
