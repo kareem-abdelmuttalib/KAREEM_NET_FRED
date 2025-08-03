@@ -165,7 +165,7 @@ You can run in continuous change mode by selecting:
 
 
 Example:
-
+```bash
 [*] Enter interval in seconds (default 30): 60
 
 This means identity (IP/MAC) will change every 60 seconds.
@@ -174,7 +174,7 @@ To stop the loop:
 
 
 Ctrl + C
-
+```
 ---
 
 ### Dark Web Resource Access
@@ -207,11 +207,11 @@ http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/index
 ### Disclaimer
 
 
-
+```bash
 KAREEM NET FRED is intended for educational and ethical use only.
 The developer is not responsible for any misuse of this tool.
 Use responsibly and in accordance with the laws in your country.
-
+```
 
 <p align="center">
   <img src="./assets/IP_Changer.png" alt="Banner" width="100%">
