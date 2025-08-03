@@ -1,159 +1,121 @@
-#KAREEM NET FRED – Advanced Anonymity Toolkit
+KAREEM NET FRED
+Overview
 
-KAREEM NET FRED is an advanced Python framework for online anonymity, created for cybersecurity researchers and privacy professionals. It provides a complete toolkit for rotating IP addresses through Tor, spoofing MAC addresses, sending secure Telegram notifications, and keeping detailed logs — all through an organized command‑line interface.
+KAREEM NET FRED is a powerful command-line tool designed to help users maintain anonymity and enhance their digital privacy by automatically changing both their IP address via the Tor network and their MAC address. It is especially useful for security researchers, journalists, activists, and privacy-conscious individuals operating in sensitive environments.
 
 
+Key Features
 
-span style="color:#1E90FF; font-size:30px;">Core Features</span>
-<span style="color:#1E90FF; font-size:24px;">Tor IP Rotation</span>
+    Automatically change your IP address through the Tor network.
 
-    Automatic IP rotation using Tor’s NEWNYM signal via the ControlPort (default: 9051).
+    Change MAC address randomly or set a specific one.
 
-    Multiple IP verification sources (Tor Project, ipify, ipwhois).
+    Option to enable or disable MAC address changing.
 
-    Automatic Tor service restart if rotation fails.
+    Send real-time notifications to a Telegram bot.
 
-    Configurable SOCKS5 proxy ports (default: 9050).
+    Log all IP and MAC changes locally in a structured format.
 
+    Display geolocation details (country and city) for each new IP address.
 
-    <span style="color:#1E90FF; font-size:24px;">MAC Address Spoofing</span>
+    Easy-to-use interactive terminal interface.
 
-    Three fallback methods for MAC spoofing: macchanger, ifconfig, and ip link.
+    Dark web resource access links provided (requires Tor).
 
-    Random MAC generation with proper unicast formatting.
 
-    Option to set a specific MAC address with format validation.
+    
+Who Is This Tool For?
 
-    Default interface detection (eth0) with manual override support.
+This tool is intended for:
 
+    Cybersecurity professionals and penetration testers
 
+    Journalists and whistleblowers who need to stay anonymous
 
-    <span style="color:#1E90FF; font-size:24px;">Geolocation Intelligence</span>
+    Activists and researchers working under surveillance-heavy conditions
 
-    Country and city lookup through dual APIs (ipapi.co and ipwhois).
+    Anyone concerned about digital privacy and online tracking
 
-    Tracks visited countries and cities with first and last seen timestamps.
 
-    Maintains a full transition chain of IP routes.
+    How It Works
 
+    Tor Integration: The tool connects to the Tor service and sends a signal to request a new identity (new circuit), which results in a new external IP address.
 
+    MAC Address Spoofing: The tool uses standard Linux commands (ifconfig, ip, or macchanger) to reset and spoof the MAC address of the selected network interface.
 
-    <span style="color:#1E90FF; font-size:24px;">Security Systems</span>
+    Geolocation Lookup: It queries external services to detect the geolocation of both old and new IPs.
 
-    Secure Telegram token entry using getpass, ensuring it is never printed to screen.
+    Telegram Notifications: When enabled, a notification with full IP and MAC change details is sent to your Telegram bot using your provided credentials.
 
-    No sensitive credentials stored in plaintext.
+    Logging: All changes are stored in a log file as structured JSON entries including timestamp, IP, location, and MAC details (if applicable).
 
-    Automatic detection if the MAC reverts to its original hardware address.
 
 
+    Usage Instructions
 
-    <span style="color:#1E90FF; font-size:24px;">Notification Systems</span>
+    Run the Script
+    Make sure the script has executable permissions, and then run it using Python 3:
 
-    Telegram alerts formatted in HTML for clear, structured messages.
+python3 kareem_net_fred.py
 
-    Logging of every change in JSONL format for analysis.
+Initial Setup
 
-    Color‑coded terminal messages for real‑time feedback.
+    The tool will check for dependencies and start the Tor service if it’s not running.
 
+    You will be prompted to configure:
 
+        Tor ports
 
-    <span style="color:#1E90FF; font-size:30px;">Advanced Functionality</span>
+        MAC address change settings
 
-    Automatic dependency handling for multiple Linux distributions (Debian, RHEL, Arch).
+        IP logging
 
-    Automatic installation of required Python packages (stem, requests, python‑telegram‑bot).
+        Telegram notifications (optional)
 
-    Real IP detection (bypassing Tor) and multi‑method MAC verification.
+Main Menu Options
 
-    Persistent session tracking with detailed movement history.
+    Change IP only
 
+    Change MAC only
 
+    Change both IP and MAC
 
-    <span style="color:#1E90FF; font-size:30px;">Installation</span>
+    Access hidden web resources
 
-    # Debian/Ubuntu
-sudo apt install tor macchanger python3-pip
-sudo systemctl enable --now tor
+    Configure Telegram
 
-# RHEL/Fedora
-sudo yum install tor macchanger python3-pip
-sudo systemctl enable --now tor
+    Configure MAC changer
 
-# Python dependencies
-pip install -r requirements.txt
+    Exit
 
+Change Loop Mode
 
+    Set an interval (e.g. every 30 seconds) to change your identity continuously.
 
+    You can stop the loop at any time with Ctrl+C.
 
-If you don’t have a requirements.txt file, you can install the needed packages manually:
 
-pip install stem requests python-telegram-bot
 
+    Requirements
 
+    Linux-based system (recommended: Debian/Ubuntu)
 
-<span style="color:#1E90FF; font-size:30px;">Usage</span>
+    Python 3
 
-python3 KAREEM_NET_FRED.py
+    Tor service (sudo apt install tor)
 
+    macchanger (if using MAC spoofing)
 
-The tool will:
+    Internet connection
 
-    Verify and install missing dependencies.
+Notes
 
-    Detect and configure Tor ports (or allow you to set them manually).
+    This tool requires root privileges to change network configurations.
 
-    Ask whether to enable logging.
+    You must be connected to the Tor network to access .onion links.
 
-    Display the main menu with the following options:
+    Always use responsibly and in accordance with the laws and regulations in your country.
 
-        Change IP
+Disclaimer
 
-        Change MAC
-
-        Change both IP and MAC
-
-        Access Dark Web links
-
-        Configure Telegram notifications
-
-        Configure Tor ports
-
-        Configure MAC changer settings
-
-        Exit
-
-
-
-        <span style="color:#1E90FF; font-size:30px;">Security Notes</span>
-
-        sudo systemctl start tor
-
-
-
-    Changing the MAC address may temporarily interrupt the network connection.
-
-    Telegram credentials are never displayed or stored in plaintext.
-
-
-
-<span style="color:#1E90FF; font-size:30px;">Code Structure Overview</span>
-
-
-check_requirements() – Checks for system and Python dependencies.
-
-detect_tor_ports() – Reads torrc configuration to detect ports.
-
-get_ip() – Retrieves the current Tor IP.
-
-change_tor_ip() – Sends the NEWNYM signal to Tor.
-
-get_location_for_ip() – Finds the country and city of the current IP.
-
-change_mac_address() – Changes MAC address with fallback methods.
-
-send_telegram_notification() – Sends updates via Telegram.
-
-log_ip_change() – Logs all IP and MAC changes.
-
-main_menu() – Provides the CLI interface for all functions.
+KAREEM NET FRED is intended for educational and ethical use only. The developer is not responsible for any misuse of this tool.
