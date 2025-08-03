@@ -1,0 +1,14 @@
+# Security
+*.log
+config.json
+telegram.token
+
+# System
+__pycache__/
+*.swp
+.DS_Store
+
+# Development
+venv/
+.idea/
+*.iml

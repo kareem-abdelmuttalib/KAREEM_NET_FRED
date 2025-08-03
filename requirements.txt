@@ -1,0 +1,41 @@
+  # Essential Packages
+requests>=2.28.1              # Handles all HTTP requests through Tor SOCKS5 proxy
+                              # - Timeout protection (10s default)
+                              # - Proxy chaining support
+                              # - IP verification from multiple endpoints
+
+stem>=1.8.0                   # Tor control protocol implementation
+                              # - NEWNYM signal handling
+                              # - ControlPort authentication
+                              # - Circuit monitoring
+
+python-telegram-bot>=13.7     # Secure notification system
+                              # - getpass-protected token input
+                              # - HTML message sanitization
+                              # - Encrypted API communication
+
+# System Integration
+psutil>=5.9.0                 # Network interface management
+                              # - Interface state monitoring (up/down)
+                              # - MAC address verification
+                              # - Process-level Tor service control
+
+netifaces>=0.11.0             # Cross-platform MAC address detection
+                              # - Multiple fallback methods
+                              # - Raw socket implementation
+                              # - Interface enumeration
+
+# Security Extensions
+cryptography>=38.0.0          # Provides:
+                              # 1. Fernet symmetric encryption for:
+                              #    - Telegram tokens in memory
+                              #    - Log file sanitization
+                              #    - Temporary credential storage
+                              #
+                              # 2. X.509 certificate validation for:
+                              #    - Tor control port TLS
+                              #    - API endpoint verification
+                              #
+                              # 3. HMAC protection for:
+                              #    - Log file integrity
+                              #    - Configuration files
