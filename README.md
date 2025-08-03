@@ -1,4 +1,4 @@
-<span style="color:#1E90FF; font-size:38px;">KAREEM NET FRED – Advanced Anonymity Toolkit</span>
+#KAREEM NET FRED – Advanced Anonymity Toolkit
 
 KAREEM NET FRED is an advanced Python framework for online anonymity, created for cybersecurity researchers and privacy professionals. It provides a complete toolkit for rotating IP addresses through Tor, spoofing MAC addresses, sending secure Telegram notifications, and keeping detailed logs — all through an organized command‑line interface.
 
